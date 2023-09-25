@@ -14,9 +14,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased text-sm">
+    <body class="font-sans bg-gray-background antialiased text-sm">
         <header class="flex items-center justify-between px-8 py-4">
-            <a href="#">My Logo</a>
+            <a href="#"><img src="{{asset('img/logo-dark.svg')}}" alt="logo"></a>
             <div class="flex items-center">
                 @if (Route::has('login'))
                     <div class="px-6 py-4">
@@ -45,5 +45,28 @@
                 </a>
             </div>
         </header>
+
+        <main class="container mx-auto max-w-custom flex">
+            <div class="w-70 mr-5">
+                Add idea from goes here Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, soluta porro qui asperiores libero dolores! Repellendus laboriosam eaque corrupti consequuntur omnis temporibus. Deserunt doloribus maxime aut sunt ab labore alias placeat reprehenderit aliquid ut iste quaerat porro, animi asperiores deleniti.
+            </div>
+            <div class="w-175">
+                <nav class="flex items-center justify-between text-xs">
+                    <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                        <li><a href="#" class="border-b-4 pb-3 border-blue">All Ideas (87)</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 border-gray hover:border-blue">Considering (6)</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 border-gray hover:border-blue">In Progress (1)</a></li>
+                    </ul>
+
+                    <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 border-gray hover:border-blue">Implemented (10)</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 border-gray hover:border-blue">Closed (55)</a></li>
+                    </ul>
+                </nav>
+                <div class="mt-8">
+                    {{ $slot }}
+                </div>
+            </div>
+        </main>
     </body>
 </html>
