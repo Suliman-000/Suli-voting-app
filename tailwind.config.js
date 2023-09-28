@@ -16,8 +16,6 @@ export default {
                 transparent: 'transparent',
                 current: 'currentColor',
                 black: 'colors.black',
-                white: 'colors.white',
-                gray: 'colors.trueGray',
                 'gray-background': '#f7f8fc',
                 'blue': '#328af1',
                 'blue-hover': '#2879bd',
@@ -33,8 +31,15 @@ export default {
             maxWidth: {
                 custom: '62.5rem',
             },
+            boxShadow: {
+                card: '4px 4px 15px 0 rgba(36,37,38,0.08)',
+                dialog: '3px 4px 15px 0 rgba(36,37,38,0.22)',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+            fontSize: {
+                xxs: ['0.625rem', {lineHeight: '1rem'}],
             },
         },
     },
