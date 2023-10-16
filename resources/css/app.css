@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* the linear gradient border color around the add idea container */
+.add-idea-container {
+    border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
+    border-image-slice: 1;
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rbga(99, 123, 255, 0));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
 /* Vertical line to the left of the comments */
 .comments-container::before {
     position: absolute;
@@ -48,4 +57,14 @@
     left: -58px;
     background: theme('colors.purple');
     opacity: 1;
+}
+
+.is-admin {
+    border-width: 1px;
+    border-image-source: linear-gradient(266deg, #21c8f6 98%, #637bff -52%);
+    border-image-slice: 1;
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(266deg, #21c8f6 98%, #637bff -52%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border-color: transparent;
 }
