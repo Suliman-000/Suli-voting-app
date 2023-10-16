@@ -73,7 +73,6 @@
                                 <ul class="absolute text-left ml-8 w-44 font-semibold bg-white shadow-dialog rounded-xl py-3">
                                     <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as spam</a></li>
                                     <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete</a></li>
-                                    <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as spam</a></li>
                                 </ul>
                             </button>
                         </div>
