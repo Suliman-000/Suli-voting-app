@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(idea::class);
     }
 
+    public function votes()
+    {
+        return $this->belongsToMany(idea::class, 'votes');
+    }
+
     public function getAvatar() {
         $firstCharacter = $this->email[0];
 
