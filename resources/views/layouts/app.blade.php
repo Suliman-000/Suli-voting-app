@@ -7,6 +7,8 @@
 
         <title>Suli Voting app</title>
 
+        {{-- this a dummy comment to epsiode 21: Fix back button bug when voting --}}
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
