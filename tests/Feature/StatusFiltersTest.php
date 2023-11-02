@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Status;
 use Livewire\Livewire;
 use App\Models\Category;
+use App\Livewire\IdeasIndex;
 use App\Livewire\StatusFilters;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -127,10 +128,17 @@ class StatusFiltersTest extends TestCase
             'status_id' => $StatusInProgress->id,
         ]);
 
-        $response = $this->get(route('idea.index', ['status' => 'In Progress']));
-        $response->assertSuccessful();
-        $response->assertSee('<div class="bg-yellow text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">In Progress</div>', false);
-        $response->assertDontSee('<div class="bg-purple text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Considering</div>', false);
+        Livewire::withQueryParams(['status' => 'In Progress'])
+            ->test(IdeasIndex::class)
+            ->assertViewHas('ideas', function($ideas) {
+                return $ideas->count() === 3
+                    && $ideas->first()->status->name === 'In Progress';
+            });
+
+        // $response = $this->get(route('idea.index', ['status' => 'In Progress']));
+        // $response->assertSuccessful();
+        // $response->assertSee('<div class="bg-yellow text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">In Progress</div>', false);
+        // $response->assertDontSee('<div class="bg-purple text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Considering</div>', false);
     }
 
     public function test_show_page_does_not_show_selected_status()
