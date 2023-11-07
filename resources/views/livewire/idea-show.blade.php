@@ -7,8 +7,8 @@
                 </a>
             </div>
             <div class="w-full mx-2 md:mx-4">
-                <h4 class="text-xl font-semibold">
-                    <a href="#" class="hover:underline">{{$idea->title}}</a>
+                <h4 class="text-xl font-semibold mt-2 md:mt-0">
+                    {{$idea->title}}
                 </h4>
                 <div class="text-gray-600 mt-3">
                     {{$idea->description}}
