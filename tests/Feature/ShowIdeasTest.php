@@ -22,8 +22,8 @@ class ShowIdeasTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
-        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
+        $statusOpen = Status::factory()->create(['name' => 'OpenUnique']);
+        $statusConsidering = Status::factory()->create(['name' => 'ConsideringUnique']);
 
         $ideaOne = idea::factory()->create([
             'user_id' => $user->id,
@@ -47,28 +47,23 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($ideaOne->title);
         $response->assertSee($ideaOne->description);
         $response->assertSee($categoryOne->name);
-        $response->assertSee('<div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>', false);
+        $response->assertSee('OpenUnique');
         $response->assertSee($ideaTwo->title);
         $response->assertSee($ideaTwo->description);
         $response->assertSee($categoryTwo->name);
-        $response->assertSee('<div class="bg-purple text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Considering</div>', false);
+        $response->assertSee('ConsideringUnique');
     }
 
 
     public function test_single_idea_shows_correctly_on_the_show_page()
     {
-        $user = User::factory()->create();
-
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $statusOpen = Status::factory()->create(['name' => 'OpenUnique']);
 
         $idea = idea::factory()->create([
-            'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $statusOpen->id,
-            'title' => 'My First Idea',
-            'description' => 'Description of my first idea',
         ]);
 
         $response = $this->get(route('idea.show', $idea));
@@ -77,7 +72,7 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($idea->title);
         $response->assertSee($idea->description);
         $response->assertSee($categoryOne->name);
-        $response->assertSee('<div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>', false);
+        $response->assertSee('OpenUnique');
     }
 
 
