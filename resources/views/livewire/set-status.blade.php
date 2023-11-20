@@ -1,4 +1,4 @@
-<div x-data="{ isOpen: false }" x-init="() => { window.livewire.on('statusWasUpdated', () => { isOpen = false; }) }" class="relative">
+<div x-data="{ isOpen: false }" x-on:close-modal.window="isOpen = false" class="relative">
     <button @click="isOpen = !isOpen" type="button" class="flex items-center justify-center w-36 h-11 text-sm bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3 mt-2 md:mt-0">
         <span>Set Status</span>
         <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

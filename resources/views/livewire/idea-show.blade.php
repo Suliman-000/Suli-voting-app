@@ -38,7 +38,9 @@
                                 </svg>
                             </button>
                             <ul x-show="isOpen" x-transition.origin.top.left @click.away="isOpen = false" @keydown.escape.window="isOpen = false" x-cloak class="absolute text-left ml-8 w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
-                                <li><a @click="isOpen = false; $dispatch('custom-show-edit-modal')" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Edit Idea</a></li>
+                                @can('update', $idea)
+                                    <li><a @click="isOpen = false; $dispatch('custom-show-edit-modal')" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Edit Idea</a></li>
+                                @endcan
                                 <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Idea</a></li>
                                 <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as spam</a></li>
                             </ul>

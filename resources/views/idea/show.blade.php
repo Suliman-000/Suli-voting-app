@@ -11,7 +11,9 @@
 
     <livewire:idea-show :idea="$idea" :votesCount="$votesCount" />
 
-    <livewire:edit-idea />
+    @can('update', $idea)
+        <livewire:edit-idea :idea="$idea" />
+    @endcan
 
     <div class="relative comments-container space-y-6 md:ml-22 pt-4 my-8 mt-1">
 
@@ -61,7 +63,7 @@
                 </div>
             </div>
         </div> {{-- End comment container 1 --}}
-        
+
         @endforeach
 
     </div> {{-- End comments container --}}

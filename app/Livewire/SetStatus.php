@@ -34,6 +34,7 @@ class SetStatus extends Component
         }
 
         $this->dispatch('statusWasUpdated');
+        $this->dispatch('close-modal');
     }
 
     public function render()
