@@ -15,7 +15,9 @@
         <livewire:edit-idea :idea="$idea" />
     @endcan
 
-    <livewire:delete-idea :idea="$idea" />
+    @can('delete', $idea)
+        <livewire:delete-idea :idea="$idea" />
+    @endcan
 
     <div class="relative comments-container space-y-6 md:ml-22 pt-4 my-8 mt-1">
 
