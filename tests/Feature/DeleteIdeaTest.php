@@ -58,6 +58,35 @@ class DeleteIdeaTest extends TestCase
         $this->assertEquals(0, Idea::count());
     }
 
+    public function test_deleting_an_idea_works_when_user_is_admin()
+    {
+        $user = User::factory()->admin()->create();
+
+        $idea = Idea::factory()->create();
+
+        Livewire::actingAs($user)
+            ->test(DeleteIdea::class, [
+                'idea' => $idea,
+            ])
+            ->call('deleteIdea')
+            ->assertRedirect(route('idea.index'));
+
+        $this->assertEquals(0, Idea::count());
+    }
+
+    public function test_deleting_an_idea_does_not_work_when_user_does_not_have_authorization()
+    {
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create();
+
+        Livewire::actingAs($user)
+            ->test(DeleteIdea::class, [
+                'idea' => $idea,
+            ])
+            ->call('deleteIdea')
+            ->assertStatus(403);
+    }
+
     public function test_deleting_an_idea_with_votes_works_when_user_has_authorization()
     {
         $user = User::factory()->create();
@@ -79,22 +108,6 @@ class DeleteIdeaTest extends TestCase
             ->assertRedirect(route('idea.index'));
 
         $this->assertEquals(0, Vote::count());
-        $this->assertEquals(0, Idea::count());
-    }
-
-    public function test_deleting_an_idea_works_when_user_is_admin()
-    {
-        $user = User::factory()->admin()->create();
-
-        $idea = Idea::factory()->create();
-
-        Livewire::actingAs($user)
-            ->test(DeleteIdea::class, [
-                'idea' => $idea,
-            ])
-            ->call('deleteIdea')
-            ->assertRedirect(route('idea.index'));
-
         $this->assertEquals(0, Idea::count());
     }
 
