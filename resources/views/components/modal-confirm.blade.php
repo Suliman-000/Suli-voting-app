@@ -9,10 +9,11 @@
 <div
     x-cloak
     x-data="{ isOpen: false }"
-    x-show="isOpen" @keydown.escape.window="isOpen = false"
+    x-show="isOpen"
+    @keydown.escape.window="isOpen = false"
     {{ '@' . $eventToOpenModal }}.window="isOpen = true; $nextTick(() => $refs.confirmButton.focus())"
     x-on:close-modal.window="isOpen = false"
-    class="relative z-10"
+    class="relative z-20"
     aria-labelledby="modal-title"
     role="dialog" aria-modal="true"
 >
