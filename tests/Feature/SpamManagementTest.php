@@ -33,14 +33,14 @@ class SpamManagementTest extends TestCase
             ->assertSeeLivewire('mark-idea-as-spam');
     }
 
-    // public function test_does_not_show_delete_idea_livewire_component_when_user_does_not_have_authorization()
-    // {
-    //     $user = User::factory()->create();
-    //     $idea = Idea::factory()->create();
+    public function test_does_not_show_mark_idea_as_spam_livewire_component_when_user_does_not_have_authorization()
+    {
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create();
 
-    //     $this->get(route('idea.show', $idea))
-    //         ->assertDontSeeLivewire('mark-idea-as-spam');
-    // }
+        $this->get(route('idea.show', $idea))
+            ->assertDontSeeLivewire('mark-idea-as-spam');
+    }
 
     public function test_marking_an_idea_as_spam_works_when_user_has_authorization()
     {
@@ -97,7 +97,7 @@ class SpamManagementTest extends TestCase
     // Mark Idea as Not Spam
     public function test_shows_mark_idea_as_not_spam_livewire_component_when_user_has_authorization()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
         $idea = Idea::factory()->create();
 
         $this->actingAs($user)
@@ -105,14 +105,14 @@ class SpamManagementTest extends TestCase
             ->assertSeeLivewire('mark-idea-as-not-spam');
     }
 
-    // public function test_does_not_show_delete_idea_livewire_component_when_user_does_not_have_authorization()
-    // {
-    //     $user = User::factory()->create();
-    //     $idea = Idea::factory()->create();
+    public function test_does_not_show_mark_idea_as_not_spam_livewire_component_when_user_does_not_have_authorization()
+    {
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create();
 
-    //     $this->get(route('idea.show', $idea))
-    //         ->assertDontSeeLivewire('mark-idea-as-spam');
-    // }
+        $this->get(route('idea.show', $idea))
+            ->assertDontSeeLivewire('mark-idea-as-not-spam');
+    }
 
     public function test_marking_an_idea_as_not_spam_works_when_user_has_authorization()
     {
