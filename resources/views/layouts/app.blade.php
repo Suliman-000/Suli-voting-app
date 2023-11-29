@@ -24,7 +24,7 @@
                 @if (Route::has('login'))
                     <div class="px-6 py-4">
                         @auth
-                           <!-- Authentication -->
+                        <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -82,6 +82,14 @@
                     {{ $slot }}
                 </div>
             </div>
+
+            @if(session('success_message'))
+                <x-notification-success
+                    :redirect="true"
+                    message-to-display="{{ (session('success_message')) }}"
+                />
+            @endif
+
         </main>
         @livewireScripts
     </body>

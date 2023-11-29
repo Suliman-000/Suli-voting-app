@@ -43,8 +43,9 @@ class EditIdea extends Component
             'description' => $this->description,
         ]);
 
-        $this->dispatch('ideaWasUpdated');
+        $this->dispatch('ideaWasUpdated', 'Idea was updated successfully!');
         $this->dispatch('close-modal');
+        $this->dispatch('open-modal');
     }
 
     public function render()
