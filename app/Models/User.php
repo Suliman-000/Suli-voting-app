@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(idea::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function votes()
     {
         return $this->belongsToMany(idea::class, 'votes');
