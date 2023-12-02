@@ -35,6 +35,10 @@
             Livewire.on('statusWasUpdated', message => {
                 showNotification(message)
             })
+
+            Livewire.on('commentWasAdded', message => {
+                showNotification(message)
+            })
         @endif
     "
     x-on:open-modal.window="isOpen = true"
