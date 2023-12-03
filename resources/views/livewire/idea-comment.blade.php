@@ -1,4 +1,4 @@
-<div class="relative comment-container mt-4 bg-white rounded-xl flex">
+<div class="comment-container relative mt-4 bg-white rounded-xl flex transition duration-500 ease-in">
     <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
         <div class="flex-none">
             <a href="#">
