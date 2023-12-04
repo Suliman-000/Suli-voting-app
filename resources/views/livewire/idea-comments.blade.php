@@ -11,10 +11,14 @@
             @endforeach
 
         </div> {{-- End comments container --}}
+
+        <div class="my-8 md:ml-22">
+            {{ $comments->onEachSide(1)->links() }}
+        </div>
     @else
         <div class="mx-auto w-70 mt-12">
             <img src="{{ asset('img/notfound.svg') }}" alt="not found image" class="mx-auto w-32 h-32" style="mix-blend-mode: luminosity">
-            <div class="text-gray-400 text-center font-bold mt-6">No Ideas were found...</div>
+            <div class="text-gray-400 text-center font-bold mt-6">No Comments yet...</div>
         </div>
     @endif
 </div>
