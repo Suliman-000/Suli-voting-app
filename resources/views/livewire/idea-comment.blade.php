@@ -43,8 +43,10 @@
                                 @can('update', $comment)
                                     <li><a @click.prevent="isOpen = false; Livewire.dispatch('setEditComment', { commentId: {{ $comment->id }} })" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Edit Comment</a></li>
                                 @endcan
+                                @can('delete', $comment)
+                                    <li><a @click.prevent="isOpen = false; Livewire.dispatch('setDeleteComment', { commentId: {{ $comment->id }} })" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Comment</a></li>
+                                @endcan
                                 <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as spam</a></li>
-                                <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete</a></li>
                             </ul>
                         </div>
                     </div>
