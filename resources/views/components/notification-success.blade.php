@@ -47,6 +47,10 @@
             Livewire.on('commentWasDeleted', message => {
                 showNotification(message)
             })
+
+            Livewire.on('commentWasMarkedAsSpam', message => {
+                showNotification(message)
+            })
         @endif
     "
     x-on:open-modal.window="isOpen = true"

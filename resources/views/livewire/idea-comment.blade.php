@@ -10,6 +10,11 @@
                 <a href="#" class="hover:underline">A random title can go here</a>
             </h4> --}}
             <div class="text-gray-600">
+                @admin
+                    @if($comment->spam_reports > 0)
+                        <div class="text-red mb-2">Spam reports: {{ $comment->spam_reports }}</div>
+                    @endif
+                @endadmin
                 {{ $comment->body }}
             </div>
 
@@ -46,7 +51,7 @@
                                 @can('delete', $comment)
                                     <li><a @click.prevent="isOpen = false; Livewire.dispatch('setDeleteComment', { commentId: {{ $comment->id }} })" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Comment</a></li>
                                 @endcan
-                                <li><a href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as spam</a></li>
+                                <li><a @click.prevent="isOpen = false; Livewire.dispatch('setMarkAsSpamComment', { commentId: {{ $comment->id }} })" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as spam</a></li>
                             </ul>
                         </div>
                     </div>
