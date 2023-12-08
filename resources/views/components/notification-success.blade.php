@@ -51,6 +51,10 @@
             Livewire.on('commentWasMarkedAsSpam', message => {
                 showNotification(message)
             })
+
+            Livewire.on('commentWasMarkedAsNotSpam', message => {
+                showNotification(message)
+            })
         @endif
     "
     x-on:open-modal.window="isOpen = true"

@@ -52,6 +52,11 @@
                                     <li><a @click.prevent="isOpen = false; Livewire.dispatch('setDeleteComment', { commentId: {{ $comment->id }} })" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Delete Comment</a></li>
                                 @endcan
                                 <li><a @click.prevent="isOpen = false; Livewire.dispatch('setMarkAsSpamComment', { commentId: {{ $comment->id }} })" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Mark as spam</a></li>
+                                @admin()
+                                @if($comment->spam_reports > 0)
+                                <li><a @click.prevent="isOpen = false; Livewire.dispatch('setMarkAsNotSpamComment', { commentId: {{ $comment->id }} })" href="#" class="hover:bg-gray-100 px-5 py-3 block transition duration-150 ease-in">Not Spam</a></li>
+                                @endif
+                                @endadmin
                             </ul>
                         </div>
                     </div>

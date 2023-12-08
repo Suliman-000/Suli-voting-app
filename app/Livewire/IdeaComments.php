@@ -24,7 +24,8 @@ class IdeaComments extends Component
     public function commentWasDeleted()
     {
         $this->idea->refresh();
-        $this->gotoPage(1);
+        // $this->gotoPage(1);
+        $this->gotoPage($this->idea->comments()->paginate()->lastPage());
     }
 
     public function mount(Idea $idea)
