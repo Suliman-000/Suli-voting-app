@@ -54,7 +54,7 @@
                 </div>
 
                 <div x-data="{ isOpen: false}" class="flex items-center space-x-2 mt-4 md:mt-0">
-                    <div class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
+                    <div class="{{ 'status-'.Str::kebab($idea->status->name) }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
                 </div>
 
                 <div class="flex items-center md:hidden mt-4 md:mt-0">
@@ -68,12 +68,6 @@
                         <button wire:click.prevent="vote" class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 transition duration-150 ease-in font-bold text-xxs uppercase rounded-xl px-4 py-3 -mx-5">Vote</button>
                     @endif
                 </div>
-
-                {{-- these divs are nneded to load the colors in the view otherwise it wont show the colors --}}
-                <div class="bg-red hidden"></div>
-                <div class="bg-yellow hidden"></div>
-                <div class="bg-purple hidden"></div>
-                <div class="bg-green hidden"></div>
             </div>
         </div>
     </div>

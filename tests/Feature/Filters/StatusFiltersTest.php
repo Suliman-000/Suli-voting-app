@@ -93,8 +93,8 @@ class StatusFiltersTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
 
         $StatusOpen = Status::factory()->create(['name' => 'Open']);
-        $StatusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
-        $StatusInProgress = Status::factory()->create(['name' => 'In Progress', 'classes' => 'bg-yellow text-white']);
+        $StatusConsidering = Status::factory()->create(['name' => 'Considering']);
+        $StatusInProgress = Status::factory()->create(['name' => 'In Progress']);
         $StatusImplemented = Status::factory()->create(['name' => 'Implemented']);
         $StatusClosed = Status::factory()->create(['name' => 'Closed']);
 
@@ -134,11 +134,6 @@ class StatusFiltersTest extends TestCase
                 return $ideas->count() === 3
                     && $ideas->first()->status->name === 'In Progress';
             });
-
-        // $response = $this->get(route('idea.index', ['status' => 'In Progress']));
-        // $response->assertSuccessful();
-        // $response->assertSee('<div class="bg-yellow text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">In Progress</div>', false);
-        // $response->assertDontSee('<div class="bg-purple text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Considering</div>', false);
     }
 
     public function test_show_page_does_not_show_selected_status()
