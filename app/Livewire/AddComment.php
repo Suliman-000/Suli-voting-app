@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Comment;
 use App\Models\Idea;
+use App\Notifications\CommentAdded;
 use Livewire\Component;
 
 class AddComment extends Component
@@ -28,7 +29,7 @@ class AddComment extends Component
 
         $this->validate();
 
-        Comment::create([
+        $newComment = Comment::create([
             'user_id' => auth()->id(),
             'idea_id' => $this->idea->id,
             'body' => $this->comment,
@@ -36,6 +37,8 @@ class AddComment extends Component
         ]);
 
         $this->reset('comment');
+
+        $this->idea->user->notify(new CommentAdded($newComment));
 
         $this->dispatch('commentWasAdded', 'Comment was posted!');
         $this->dispatch('close-modal');
