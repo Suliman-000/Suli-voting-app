@@ -7,9 +7,6 @@
 
         <title>Suli Voting app</title>
 
-        {{-- this a dummy comment to epsiode 21: Fix back button bug when voting Miss --}}
-        {{-- this a dummy comment to epsiode 51: Comments Pagination Miss --}}
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -87,6 +84,7 @@
                     {{ $slot }}
                 </div>
             </div>
+        </main>
 
             @if(session('success_message'))
                 <x-notification-success
@@ -95,7 +93,14 @@
                 />
             @endif
 
-        </main>
+            @if (session('error_message'))
+                <x-notification-success
+                    type="error"
+                    :redirect="true"
+                    message-to-display="{{ (session('error_message')) }}"
+                />
+            @endif
+
         @livewireScripts
     </body>
 </html>
