@@ -23,10 +23,6 @@ class DeleteIdea extends Component
             abort(403);
         }
 
-        Vote::where('idea_id', $this->idea->id)->delete();
-
-        Comment::where('idea_id', $this->idea->id)->delete();
-
         Idea::destroy($this->idea->id);
 
         session()->flash('success_message', 'Idea has been deleted successfully!');

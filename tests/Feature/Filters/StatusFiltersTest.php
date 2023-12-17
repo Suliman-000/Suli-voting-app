@@ -98,31 +98,13 @@ class StatusFiltersTest extends TestCase
         $StatusImplemented = Status::factory()->create(['name' => 'Implemented']);
         $StatusClosed = Status::factory()->create(['name' => 'Closed']);
 
-        $idea = Idea::factory()->create([
+        $idea = Idea::factory(2)->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $StatusConsidering->id,
         ]);
 
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusConsidering->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusInProgress->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusInProgress->id,
-        ]);
-
-        $idea = Idea::factory()->create([
+        $idea = Idea::factory(3)->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $StatusInProgress->id,

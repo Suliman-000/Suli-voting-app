@@ -31,85 +31,25 @@ class StatusTest extends TestCase
             'status_id' => $StatusOpen->id,
         ]);
 
-        $idea = Idea::factory()->create([
+        $idea = Idea::factory(2)->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $StatusConsidering->id,
         ]);
 
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusConsidering->id,
-        ]);
-
-        $idea = Idea::factory()->create([
+        $idea = Idea::factory(3)->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $StatusInProgress->id,
         ]);
 
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusInProgress->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusInProgress->id,
-        ]);
-
-        $idea = Idea::factory()->create([
+        $idea = Idea::factory(4)->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $StatusImplemented->id,
         ]);
 
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusImplemented->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusImplemented->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusImplemented->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusClosed->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusClosed->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusClosed->id,
-        ]);
-
-        $idea = Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id' => $categoryOne->id,
-            'status_id' => $StatusClosed->id,
-        ]);
-
-        $idea = Idea::factory()->create([
+        $idea = Idea::factory(5)->create([
             'user_id' => $user->id,
             'category_id' => $categoryOne->id,
             'status_id' => $StatusClosed->id,

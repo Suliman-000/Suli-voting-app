@@ -50,7 +50,7 @@
             @endforeach
         @else
             <li class="mx-auto w-40 py-6">
-                <img src="{{ asset('img/notfound.svg') }}" alt="not found image" class="mx-auto w-32 h-32" style="mix-blend-mode: luminosity">
+                <img src="{{ asset('img/notfound.svg') }}" alt="not found image" class="mx-auto w-32 h-32 mix-blend-luminosity">
                 <div class="text-gray-400 text-center font-bold mt-6">No new Notifications...</div>
             </li>
         @endif

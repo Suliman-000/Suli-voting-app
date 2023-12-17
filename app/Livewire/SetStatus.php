@@ -28,6 +28,14 @@ class SetStatus extends Component
             abort(403);
         }
 
+        if($this->idea->status_id === (int) $this->status) {
+
+            $this->dispatch('close-modal');
+            $this->dispatch('statusWasUpdatedError', 'Status is the same!');
+
+            return;
+        }
+
         $this->idea->status_id = $this->status;
         $this->idea->save();
 

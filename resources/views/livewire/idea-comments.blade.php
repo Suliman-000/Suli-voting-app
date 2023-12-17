@@ -17,7 +17,7 @@
         </div>
     @else
         <div class="mx-auto w-70 mt-12">
-            <img src="{{ asset('img/notfound.svg') }}" alt="not found image" class="mx-auto w-32 h-32" style="mix-blend-mode: luminosity">
+            <img src="{{ asset('img/notfound.svg') }}" alt="not found image" class="mx-auto w-32 h-32 mix-blend-luminosity">
             <div class="text-gray-400 text-center font-bold mt-6">No Comments yet...</div>
         </div>
     @endif

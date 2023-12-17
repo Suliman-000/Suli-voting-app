@@ -201,7 +201,7 @@ class CommentNotificationsTest extends TestCase
             ->set('comment', 'This is the first Comment')
             ->call('addComment');
 
-        $idea->comments()->delete();
+        $idea->delete();
 
         Livewire::actingAs($user)
             ->test(CommentNotifications::class)

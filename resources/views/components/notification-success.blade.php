@@ -8,6 +8,7 @@
     x-cloak
     x-data="{
         isOpen: false,
+        isError: @if ($type === 'success') false @elseif($type === 'error') true @endif,
         messageToDisplay: '{{ $messageToDisplay }}',
         showNotification(message) {
             this.isOpen = true
@@ -22,38 +23,52 @@
             $nextTick(() => showNotification(messageToDisplay))
         @else
             Livewire.on('ideaWasUpdated', message => {
+                isError = false
                 showNotification(message)
             })
 
             Livewire.on('ideaWasMarkedAsSpam', message => {
+                isError = false
                 showNotification(message)
             })
 
             Livewire.on('ideaWasMarkedAsNotSpam', message => {
+                isError = false
                 showNotification(message)
             })
 
             Livewire.on('statusWasUpdated', message => {
+                isError = false
+                showNotification(message)
+            })
+
+            Livewire.on('statusWasUpdatedError', message => {
+                isError = true
                 showNotification(message)
             })
 
             Livewire.on('commentWasAdded', message => {
+                isError = false
                 showNotification(message)
             })
 
             Livewire.on('commentWasUpdated', message => {
+                isError = false
                 showNotification(message)
             })
 
             Livewire.on('commentWasDeleted', message => {
+                isError = false
                 showNotification(message)
             })
 
             Livewire.on('commentWasMarkedAsSpam', message => {
+                isError = false
                 showNotification(message)
             })
 
             Livewire.on('commentWasMarkedAsNotSpam', message => {
+                isError = false
                 showNotification(message)
             })
         @endif
@@ -71,17 +86,14 @@
     class="z-20 flex justify-between max-w-xs sm:max-w-sm w-full fixed bottom-0 right-0 bg-white rounded-xl shadow-lg border px-4 py-5 mx-2 sm:mx-6 my-8"
 >
     <div class="flex items-center">
-        @if($type === 'success')
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        @endif
 
-        @if ($type === 'error')
-            <svg class="text-red h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        @endif
+        <svg x-show="!isError" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+
+        <svg x-show="isError" class="text-red h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
 
         <div class="ml-2 font-semibold text-gray-500 text-sm sm:text-base" x-text="messageToDisplay"></div>
     </div>
